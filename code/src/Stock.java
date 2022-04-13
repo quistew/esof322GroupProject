@@ -117,3 +117,4 @@ public class Stock {
         return Math.round((sum / arr.length)*100.0)/100.0;
     }
 }
+
