@@ -1,5 +1,3 @@
-package stockdriver;
-
 import java.util.Scanner;
 
 public class StockDriver {
