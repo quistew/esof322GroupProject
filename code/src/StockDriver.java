@@ -12,21 +12,21 @@ public class StockDriver {
 		  String answerRange = "";
 		  
 		  System.out.println(
-				  "1) P/E" + "\n" +
-				  "2) P/S" + "\n" +
-				  "3) PEG" + "\n" +
-				  "4) D/E" + "\n" +
-				  "5) P/B" + "\n" +
+				  "1) PE" + "\n" +
+				  "2) PS" + "\n" +
+				  "3) PG" + "\n" +
+				  "4) DE" + "\n" +
+				  "5) PB" + "\n" +
 				  "Enter number for metric: "
 				  );
 		  
 		  answerType =metricType.nextInt();  
 		  
-		  if (answerType == 1) {answerTypeOutput = "P/E";}
-		  if (answerType == 2) {answerTypeOutput = "P/S";}
-		  if (answerType == 3) {answerTypeOutput = "PEG";}
-		  if (answerType == 4) {answerTypeOutput = "D/E";}
-		  if (answerType == 5) {answerTypeOutput = "P/B";}
+		  if (answerType == 1) {answerTypeOutput = "PE";}
+		  if (answerType == 2) {answerTypeOutput = "PS";}
+		  if (answerType == 3) {answerTypeOutput = "PG";}
+		  if (answerType == 4) {answerTypeOutput = "DE";}
+		  if (answerType == 5) {answerTypeOutput = "PB";}
 		  
 		  System.out.println("Enter " + answerTypeOutput + " range (lower bound, upper bound): "); 
 		  
