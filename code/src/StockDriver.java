@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class StockDriver {
 
 	public static void main(String[] args) {
+
+		StockDatabase stockDatabase = new StockDatabase();
 		
 		Scanner metricType = new Scanner(System.in);  
 		Scanner metricRange = new Scanner(System.in);  
@@ -30,8 +32,12 @@ public class StockDriver {
 		  
 		  System.out.println("Enter " + answerTypeOutput + " range (lower bound, upper bound): "); 
 		  
-		  answerRange = metricRange.nextLine(); 
-		  
+		  answerRange = metricRange.nextLine();
+		  double min = Double.parseDouble(answerRange.split(",")[0]);
+		  double max = Double.parseDouble(answerRange.split(",")[1]);
+
+		  Stock[] filteredStocks = new StockFilter().filter(stockDatabase.returnAll(), answerType, min, max)
+
 		  System.out.println("Diaplaying companies with a " + answerTypeOutput + " range of " +answerRange + "...");
 		  
 		  

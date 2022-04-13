@@ -1,7 +1,7 @@
 import java.util.*;
 
-public class FilterStocks {
-	public Stock[] filter(Stock[] stocks, String metric, float min, float max){
+public class StockFilter {
+	public Stock[] filter(Stock[] stocks, String metric, double min, double max){
 		List<Stock> returnlist = new ArrayList<Stock>();
 		
 		if(metric.equals("PE")) {
