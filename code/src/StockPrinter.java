@@ -1,12 +1,20 @@
+/*
+The StockPrinter class is used for formatting the output of metric data for a list of Stock objects.
+Written by Eli Quist.
+ */
 public class StockPrinter {
+    // A list of stocks to be printed
     Stock[] stocks;
+    // The metric of interest to be printed
     String metric;
 
+    // Constructor method that sets the list of stocks and metric of interest
     public StockPrinter(Stock[] stocks, String metric) {
         this.stocks = stocks;
         this.metric = metric;
     }
 
+    // Method for printing the Average and Most recent values of the inputted metric.
     public void print() {
         for (Stock s: stocks ) {
 
@@ -40,5 +48,5 @@ public class StockPrinter {
             }
         }
     }
-
 }
+

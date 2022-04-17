@@ -1,6 +1,17 @@
 import java.util.*;
 
+/*
+The StockFilter is a class for querying specific information about stocks in a stock database.
+Written by Dyllan Hankins.
+ */
 public class StockFilter {
+    /*
+    Returns a list of Stock objects that satisfy inputted constraints.
+    The 'stocks' argument is an array of Stock objects to be filtered.
+    The 'metric' argument is the metric by which the stocks will be filtered.
+    The arguments min and max represent the minimum and maximum values of the metric that will be returned in the filtering.
+    The return is a list of Stock objects with a metric in that threshold.
+     */
     public Stock[] filter(Stock[] stocks, String metric, double min, double max){
         List<Stock> returnlist = new ArrayList<Stock>();
 
@@ -48,4 +59,5 @@ public class StockFilter {
         return(returnlist.toArray(rl));
     }
 }
+
 

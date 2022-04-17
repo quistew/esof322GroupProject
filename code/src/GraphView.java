@@ -6,8 +6,12 @@ import java.util.List;
 /**
  * Based on https://gist.github.com/roooodcastro/6325153
  */
-
+/*
+The GraphView class generates a graph of stock data over time.
+Written by Ben Huotari.
+ */
 public final class GraphView extends JPanel {
+    // Attributes for creating the figure and graph
     private final static int padding = 70;
     private final static int labelPadding = 25;
     private final static int titlePadding = 0;
@@ -17,36 +21,44 @@ public final class GraphView extends JPanel {
     private final static Color gridColor = new Color(200, 200, 200, 200);
     private static final Stroke graphStroke = new BasicStroke(2f);
     private List<Double> values = new ArrayList<>(10);
+    // Attributes for adding labels to the graph
     private String graphTitle = "Title";
     private String xaxis = "x-axis";
     private String yaxis = "y-axis";
 
+    // Creates a figure that the graph will be on
     public GraphView() {
         setPreferredSize(new Dimension(padding * 2 + 300, padding * 2 + 200));
     }
 
+    // Method for adding a title to the graph
     public void setTitle(String title){
         graphTitle = title;
     }
 
+    // Method for adding a label to the x axis
     public void setXAxis(String x){
         xaxis = x;
     }
 
+    // Method for adding a label to the y axis
     public void setYAxis(String y){
         yaxis = y;
     }
 
+    // Method for resetting the graph and graphing new data
     public void setValues(ArrayList<Double> newValues) {
         values.clear();
         addValues(newValues);
     }
 
+    // Method for adding new data to a graph without resetting it
     public void addValues(ArrayList<Double> newValues) {
         values.addAll(newValues);
         updateUI();
     }
 
+    // Method for generating the visualization of the graph
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
@@ -82,7 +94,7 @@ public final class GraphView extends JPanel {
         final int fontHeight = fontMetrics.getHeight();
 
         // create hatch marks and grid lines for y axis.
-         for (int i = 0; i < numberYDivisions + 1; i++) {
+        for (int i = 0; i < numberYDivisions + 1; i++) {
             final int x1 = padding + labelPadding;
             final int x2 = pointWidth + padding + labelPadding;
             final int y = height - ((i * (height - padding * 2 - labelPadding)) / numberYDivisions + padding + labelPadding);
@@ -96,7 +108,7 @@ public final class GraphView extends JPanel {
                 g.drawString(yLabel, x1 - labelWidth - 5, y + (fontHeight / 2) - 3);
             }
             g.drawLine(x1, y, x2, y);
-        } 
+        }
 
         // and for x axis
         if (length > 1) {
@@ -114,7 +126,7 @@ public final class GraphView extends JPanel {
                 }
                 g.drawLine(x, y1, x, y2);
             }
-        } 
+        }
 
         //draw title
         final int x = width / 2 + 20;
@@ -167,10 +179,10 @@ public final class GraphView extends JPanel {
 
     }
 
+    // Utility methods for aiding in creating the graph visualization
     private double getMinScore() {
         return values.stream().min(Double::compareTo).orElse(0.0);
     }
-
     private double getMaxScore() {
         return values.stream().max(Double::compareTo).orElse(0.0);
     }

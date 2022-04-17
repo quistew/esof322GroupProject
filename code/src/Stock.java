@@ -2,9 +2,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/*
+The Stock class represents a Stock in a StockDatabase.
+It contains time series information about the different metrics for each stock.
+A stock is uniquely identified by its ticker symbol, the attribute 'ticker'.
+Written by Eli Quist.
+ */
 public class Stock {
 
+    // The stock's/company's ticker symbol
     private final String ticker;
+    // Arrays that represent time series data for each metric
     private final double[] Price = new double[49];
     private final double[] PE = new double[49];
     private final double[] DE = new double[49];
@@ -12,13 +20,17 @@ public class Stock {
     private final double[] PS = new double[49];
     private final double[] PB = new double[49];
 
+    // Constructor method: takes in the stock's ticker and a path to a .csv file containing the time series data
     public Stock(String ticker, String filepath) throws FileNotFoundException {
+        // set the stock's ticker
         this.ticker = ticker;
 
+        // Read in csv file
         File file = new File(filepath);
         Scanner sc = new Scanner(file);
         sc.nextLine();
         int index = 0;
+        // for each line of the csv file, split up the line to properly add the time series data for each metric
         while (sc.hasNextLine()) {
             String[] line = sc.nextLine().split(",");
             Price[index] = Double.parseDouble(line[0]);
@@ -31,10 +43,17 @@ public class Stock {
         }
     }
 
+    // Method to get the Ticker of a Stock object
     public String getTicker() {
         return ticker;
     }
 
+    /*
+    Each metric has a method for returning
+    get<metric>(): returns the full time series data (as an array) for the metric
+    getAverage<metric>(): returns the average value of that metric over time
+    getMostRecent<metric>(): returns the most recent value of that metric
+     */
     public double[] getPrice() {
         return Price;
     }
@@ -107,6 +126,7 @@ public class Stock {
         return PB[PB.length - 1];
     }
 
+    // Utility method for averaging the time series data (an array)
     private double average(double[] arr) {
         double sum = 0;
         int index = 0;
@@ -117,4 +137,5 @@ public class Stock {
         return Math.round((sum / arr.length)*100.0)/100.0;
     }
 }
+
 
