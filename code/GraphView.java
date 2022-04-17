@@ -186,3 +186,4 @@ public final class GraphView extends JPanel {
     private double getMaxScore() {
         return values.stream().max(Double::compareTo).orElse(0.0);
     }
+}
